@@ -22,10 +22,10 @@ Current Status
 ![Project-Structure](https://github.com/MaLsR6053/Web_App_Vulnerabilities_Project/blob/main/project.png)
 
 
-- Dockerfile: Defines the Docker image for running the web application.\
-- styles.css: Contains styling rules for the web pages.\
+- Dockerfile: Defines the Docker image for running the web application.
+- styles.css: Contains styling rules for the web pages.
 - index.html: Landing page of the application.\
-- vulnerabilities.html: Lists various vulnerabilities with links to their detailed pages.\
+- vulnerabilities.html: Lists various vulnerabilities with links to their detailed pages.
 - xss.html, sql-injection.html, etc.: Individual pages for each vulnerability.
 
 <h2>How to Run the Project</h2>
