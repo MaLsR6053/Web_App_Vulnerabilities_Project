@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross-Site Scripting (XSS)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Cross-Site Scripting (XSS)</h1>
+      <p><strong>Definition:</strong> XSS is a security vulnerability that allows attackers to inject malicious scripts into webpages viewed by other users.</p>
+      <p><strong>Example:</strong> An attacker might inject a script into a comment field that executes when other users view the comment.</p>
+      <div class="test-area">
+        <!-- Input fields or testing area for XSS -->
+        <form action="/xss-test" method="post">
+          <label for="input">Input:</label>
+          <input type="text" id="input" name="input">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

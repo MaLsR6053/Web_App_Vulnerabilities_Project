@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insecure Direct Object References (IDOR)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Insecure Direct Object References (IDOR)</h1>
+      <p><strong>Definition:</strong> IDOR is a vulnerability that allows attackers to access objects they are not authorized to access by manipulating input parameters.</p>
+      <p><strong>Example:</strong> An attacker might alter an ID in a URL to access another user’s data.</p>
+      <div class="test-area">
+        <!-- Input fields or testing area for IDOR -->
+        <form action="/idor-test" method="post">
+          <label for="input">Input:</label>
+          <input type="text" id="input" name="input">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

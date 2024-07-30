@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross-Site Request Forgery (CSRF)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Cross-Site Request Forgery (CSRF)</h1>
+      <p><strong>Definition:</strong> CSRF is an attack that tricks a user into performing actions on a website without their consent.</p>
+      <p><strong>Example:</strong> An attacker might use a malicious link to make unauthorized transactions on a banking site.</p>
+      <div class="test-area">
+        <!-- Input fields or testing area for CSRF -->
+        <form action="/csrf-test" method="post">
+          <label for="input">Input:</label>
+          <input type="text" id="input" name="input">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
