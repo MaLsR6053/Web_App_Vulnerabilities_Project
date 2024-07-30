@@ -18,7 +18,8 @@ Current Status
 - Individual Vulnerability Pages: Each vulnerability has a placeholder page with sections for title, definition, and example.
 
 <h2>Project Structure</h2>
-![Project Structure](https://github.com/MaLsR6053/Web_App_Vulnerabilities_Project/blob/main/project.png)
+
+![Project-Structure](https://github.com/MaLsR6053/Web_App_Vulnerabilities_Project/blob/main/project.png)
 
 
 - Dockerfile: Defines the Docker image for running the web application.\
