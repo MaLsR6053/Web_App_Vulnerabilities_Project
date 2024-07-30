@@ -49,7 +49,7 @@ Access the Application:
 
 <h2>Contributing</h2>
 
-Feel free to contribute to the project by submitting issues, suggestions, or pull requests. Your feedback and contributions are welcome!
+Feel free to contribute to the project by submitting issues, suggestions, or forking your own copy. Your feedback is welcome! However, due to the intended function and use of this project, I will be selective of any pull requests.
 
 <h2>License</h2>
 
