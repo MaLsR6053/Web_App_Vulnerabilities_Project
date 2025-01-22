@@ -3,25 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cross-Site Scripting (XSS)</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Cross-Site Scripting (XSS) - Reflected</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Keeping your styles intact -->
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault(); // Prevent the default form submission behavior
+
+      // Get the user's input
+      const userInput = document.getElementById('input').value;
+      console.log("User Input:", userInput);
+
+      // Inject the user's input into the output div
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = userInput; // Directly set the input into the div
+
+      // If the input contains a <script> tag, execute it explicitly for testing
+      const scriptTag = outputDiv.querySelector('script');
+      if (scriptTag) {
+        const newScript = document.createElement('script');
+        newScript.innerHTML = scriptTag.innerHTML;
+        document.body.appendChild(newScript); // Dynamically execute the script
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <div class="box">
-      <h1>Cross-Site Scripting (XSS)</h1>
+      <h1>Cross-Site Scripting (XSS) - Reflected</h1>
       <p><strong>Definition:</strong> XSS is a security vulnerability that allows attackers to inject malicious scripts into webpages viewed by other users.</p>
       <p><strong>Example:</strong> An attacker might inject a script into a comment field that executes when other users view the comment.</p>
+      <p><strong>To ensure that your script works, please disable Content-Security-Policy for testing purposes. 
+      For Chrome/Edge I recommend the "Disable Content-Security-Policy" extension.</strong></p>
+      <p><strong>More functionality will be added to the future, however please try to get a popup to appear!</strong></p>
+      <p><strong>If you're feeling confident, can you also change the color of the background? Maybe have a fake login form appear?</strong></p>
       <div class="test-area">
-        <!-- Input fields or testing area for XSS -->
-        <form action="/xss-test" method="post">
+        <form onsubmit="handleSubmit(event)"> <!-- Attach JavaScript to the form -->
           <label for="input">Input:</label>
           <input type="text" id="input" name="input">
           <button type="submit">Submit</button>
         </form>
+        <div id="output" style="margin-top: 20px;"></div> <!-- Area for displaying results -->
       </div>
     </div>
   </div>
 </body>
 </html>
-
