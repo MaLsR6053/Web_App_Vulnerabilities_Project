@@ -3,25 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SQL Injection</title>
+  <title>SQL Injection - Simulated</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
     <div class="box">
-      <h1>SQL Injection</h1>
+      <h1>SQL Injection - <strong>Simulated</strong></h1>
       <p><strong>Definition:</strong> SQL Injection is a code injection technique that might allow an attacker to execute arbitrary SQL queries against a database.</p>
       <p><strong>Example:</strong> An attacker might enter malicious SQL code into a login form to gain unauthorized access.</p>
+      <p><strong>Note!</strong> There isn't a backend process or database for this page. The input is simulated via javascript, so advanced techniques will <strong>NOT</strong> work!</p>
       <div class="test-area">
         <!-- Input fields or testing area for SQL Injection -->
-        <form action="/sql-injection-test" method="post">
+        <form id="sqlForm">
           <label for="input">Input:</label>
           <input type="text" id="input" name="input">
           <button type="submit">Submit</button>
         </form>
+        <div id="output" style="margin-top: 20px;"></div>
       </div>
     </div>
   </div>
+
+  <script>
+    // JavaScript to simulate SQL Injection behavior
+    document.getElementById('sqlForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Simulated database query and user input
+      const input = document.getElementById('input').value;
+      const simulatedQuery = `SELECT * FROM users WHERE username = '${input}'`;
+
+      // Simulated vulnerable response
+      let output = '';
+      if (input.includes("' OR '1'='1") || input.includes("'--")) {
+        output = `<p style="color: red;">SQL Injection Successful: All users returned! (Simulated)</p>`;
+      } else if (input === 'admin') {
+        output = `<p style="color: green;">Welcome, admin! (Simulated)</p>`;
+      } else {
+        output = `<p style="color: orange;">Invalid username. (Simulated)</p>`;
+      }
+
+      // Display the simulated query and result
+      document.getElementById('output').innerHTML = `
+        <p><strong>Simulated Query:</strong> ${simulatedQuery}</p>
+        ${output}
+      `;
+    });
+  </script>
 </body>
 </html>
-
