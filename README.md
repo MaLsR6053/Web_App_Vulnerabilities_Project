@@ -10,12 +10,13 @@ The Web Application Vulnerabilities Lab is designed to help users understand and
 - Landing Page: Introduces the lab and provides an entry point to explore different vulnerabilities.
 - Vulnerability List Page: Displays a list of common web vulnerabilities, each linked to a detailed page.
 - Vulnerability Pages: Basic pages for each vulnerability including placeholders for definitions, examples, and future interactive elements.
+- Functional IDOR, limited basic SQLi testing, and XSS pages.
 
 Current Status
 
 - Landing Page: Features a dark grey background with a central lighter grey box. Contains the lab's introduction and an "Enter" button.
 - Vulnerability List Page: Displays vulnerabilities in a card-like format with blue buttons.
-- Individual Vulnerability Pages: Each vulnerability has a placeholder page with sections for title, definition, and example.
+- Individual Vulnerability Pages: Each vulnerability has a dedicated page with sections for title, definition, and example.
 
 <h2>Project Structure</h2>
 
@@ -40,6 +41,18 @@ Run the Docker Container:
 
 Access the Application:
         Open your web browser and navigate to ```http://localhost``` to view the application.
+
+<h3>Alternative Instructions</h3>
+
+Download the project as a zip file, and unzip wherever you would like.
+
+With Python installed on your machine, navigate to the Web_App_Vulnerabilities_Project location and run: 
+
+```python3 -m http.server 8000```
+
+Next, navigate in your browser to:
+
+```http://localhost:8000```
 
 <h2>Future Plans</h2>
 
