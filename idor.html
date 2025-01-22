@@ -5,6 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Insecure Direct Object References (IDOR)</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Function to handle form submission and simulate IDOR behavior
+    function handleSubmit(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      const inputValue = document.getElementById('input').value;
+      const roleDisplay = document.getElementById('role-display');
+      const restrictedRoles = ["admin", "Admin", "Administrator", "administrator"];
+
+      // Deny admin role input in the input field
+      if (restrictedRoles.includes(inputValue)) {
+        roleDisplay.textContent = "You are not authorized to be an admin! This action will be logged and reported.";
+      } else {
+        roleDisplay.textContent = `You are trying to access user ID: ${inputValue}`;
+      }
+    }
+
+    // Check for the 'role' parameter in the URL and handle accordingly
+    function checkURLRole() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const role = urlParams.get('role');
+      const roleDisplay = document.getElementById('role-display');
+      const restrictedRoles = ["admin", "Admin", "Administrator", "administrator"];
+
+      // If the 'role' is an admin role in the URL, grant admin access with a custom message
+      if (role && restrictedRoles.includes(role)) {
+        roleDisplay.textContent = "Congrats! You've exploited an IDOR vulnerability and upgraded your role to an Administrator!";
+      } else if (role) {
+        roleDisplay.textContent = `You are trying to access role: ${role}`;
+      } else {
+        roleDisplay.textContent = "You are a regular user.";
+      }
+    }
+
+    // Show the popup hint
+    function showHint() {
+      alert("Try manipulating the URL (i.e. ?role=)");
+    }
+
+    // Run the checkURLRole function when the page loads
+    window.onload = checkURLRole;
+  </script>
+  <style>
+    /* Add styling for the hint button */
+    .hint-button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .hint-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,14 +73,19 @@
       <p><strong>Example:</strong> An attacker might alter an ID in a URL to access another user’s data.</p>
       <div class="test-area">
         <!-- Input fields or testing area for IDOR -->
-        <form action="/idor-test" method="post">
-          <label for="input">Input:</label>
+        <form onsubmit="handleSubmit(event)">
+          <label for="input">What role would you like to be?</label>
           <input type="text" id="input" name="input">
           <button type="submit">Submit</button>
         </form>
+        <p id="role-display">You are a regular user.</p> <!-- Role display -->
+
+        <!-- Hint Button -->
+        <button class="hint-button" onclick="showHint()">Hint</button>
+        <!-- Back Button -->
+        <button onclick="window.location.href='vulnerabilities.html';">Back</button>
       </div>
     </div>
   </div>
 </body>
 </html>
-
